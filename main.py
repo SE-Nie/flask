@@ -36,7 +36,7 @@ def upload_file():
                 {"id": 2, "payload_url": "http://placekitten.com/200/300", "more_info": "blablabl"},
                 {"id": 3, "payload_url": "http://placekitten.com/200/300", "more_info": "blablabl"}
             ]
-             headers = {
+            headers = {
                 'Access-Control-Allow-Origin': '*'
             }
             return (response, 200, headers)
