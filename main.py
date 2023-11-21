@@ -6,11 +6,18 @@ UPLOAD_FOLDER = "./uploads"
 ALLOWED_EXTENSIONS = {"txt", "pdf", "png", "jpg", "jpeg", "gif"}
 
 
+
+app = Flask(__name__)
 app = Flask(__name__)
 
 
 
 
+@app.route('/')
+
+def index():
+
+    return jsonify({"Choo Choo": "Welcome to your Flask app 🚅"})
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
@@ -18,7 +25,6 @@ def allowed_file(filename):
 @app.route("/", methods=["GET", "POST"])
 def upload_file():
     if request.method == "POST":
-        print("This is a POST request")
         # check if the post request has the file part
         if "img" not in request.files:
             flash("No file part")
@@ -32,9 +38,9 @@ def upload_file():
         if file and allowed_file(file.filename):
             print(file.filename)
             filename = secure_filename(file.filename)
-            return "I'm working"
-          
-        
+            # file.save(os.path.join(UPLOAD_FOLDER, filename))
+            return "File uploaded successfully"
+
     return """
     <!doctype html>
     <title>Upload new File</title>
@@ -44,6 +50,8 @@ def upload_file():
       <input type=submit value=Upload>
     </form>
     """
+
+
 
 
 if __name__ == '__main__':
