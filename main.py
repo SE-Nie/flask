@@ -32,15 +32,7 @@ def upload_file():
         if file and allowed_file(file.filename):
             print(file.filename)
             filename = secure_filename(file.filename)
-            response = [
-                {"id": 1, "payload_url": "http://placekitten.com/200/300", "more_info": "blablabl"},
-                {"id": 2, "payload_url": "http://placekitten.com/200/300", "more_info": "blablabl"},
-                {"id": 3, "payload_url": "http://placekitten.com/200/300", "more_info": "blablabl"}
-            ]
-            headers = {
-                'Access-Control-Allow-Origin': '*'
-            }
-            return (response, 200, headers)
+            return "I'm working"
           
         
     return """
