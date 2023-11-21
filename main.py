@@ -31,8 +31,13 @@ def upload_file():
         if file and allowed_file(file.filename):
             print(file.filename)
             filename = secure_filename(file.filename)
-            file.save(os.path.join(UPLOAD_FOLDER, filename))
-            return "File uploaded successfully"
+            response = [
+                {"id": 1, "payload_url": "http://placekitten.com/200/300", "more_info": "blablabl"},
+                {"id": 2, "payload_url": "http://placekitten.com/200/300", "more_info": "blablabl"},
+                {"id": 3, "payload_url": "http://placekitten.com/200/300", "more_info": "blablabl"}
+            ]
+            #file.save(os.path.join(UPLOAD_FOLDER, filename))
+            return response
         
     return """
     <!doctype html>
